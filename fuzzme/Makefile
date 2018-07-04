@@ -1,8 +1,8 @@
 all: afl libfuzzer libfuzzer-unsanitized afl-persistent
 
 afl: fuzzme.cc fuzz_fuzzme_afl.cc
-	AFL_HARDEN=1 afl-g++ -O0 -c -g fuzzme.cc -o fuzzme.o
-	AFL_HARDEN=1 afl-g++ -O0 -g fuzzme.o fuzz_fuzzme_afl.cc -o demo-afl
+	afl-g++ -O0 -c -g fuzzme.cc -o fuzzme.o
+	afl-g++ -O0 -g fuzzme.o fuzz_fuzzme_afl.cc -o demo-afl
 
 afl-persistent: fuzzme.cc fuzz_fuzzme_afl_persistent.cc
 	AFL_USE_ASAN=1 afl-clang-fast++ -c -g fuzzme.cc -o fuzzme.o
